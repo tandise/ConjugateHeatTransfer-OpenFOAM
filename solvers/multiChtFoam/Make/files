@@ -1,0 +1,7 @@
+multiChtFoam.C
+regionProperties/regionProperties.C
+solidWallHeatFluxTemperature/solidWallHeatFluxTemperatureFvPatchScalarField.C
+solidWallMixedTemperatureCoupled/solidWallMixedTemperatureCoupledFvPatchScalarField.C
+
+
+EXE = $(FOAM_APPBIN)/multiChtFoam

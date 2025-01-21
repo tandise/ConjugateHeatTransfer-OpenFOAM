@@ -1,0 +1,20 @@
+#!/bin/bash
+
+rootDir=$PWD
+
+casePaths=$(find . -type d -iname "*case*")
+
+for FOLDER in $casePaths
+do
+    echo This is: $FOLDER
+    cd $FOLDER
+    source Allclean & rm -f *xls
+    wait $!
+    source Allrun &
+    wait $!
+    echo ------------------------------------------------------------------------
+    cd $rootDir
+done
+
+mkdir -p results
+gnuplot plot.gnuplot

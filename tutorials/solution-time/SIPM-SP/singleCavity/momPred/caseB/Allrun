@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+# Get application name
+application=`getApplication`
+
+runApplication -l log.blockMesh.solid blockMesh -region solid
+runApplication -l log.setSet.solid setSet -region solid -batch solid.setSet
+runApplication -l log.setsToZones.solid setsToZones -region solid -noFlipMap
+
+runApplication blockMesh -region cavity
+runApplication setSet -region cavity -batch fluid.setSet
+runApplication setsToZones -region cavity -noFlipMap
+
+runApplication multiChtFoam
+
+source postProcessDsip
+
+# ----------------------------------------------------------------- end-of-file
+

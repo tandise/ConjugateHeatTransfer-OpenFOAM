@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+# Get application name
+application=`getApplication`
+
+runApplication -l log.blockMesh.solidT blockMesh -region solidT
+runApplication -l log.setSet.solidT setSet -region solidT -batch solidT.setSet
+runApplication -l log.setsToZones.solidT setsToZones -region solidT -noFlipMap
+
+runApplication -l log.blockMesh.solidR blockMesh -region solidR
+runApplication -l log.setSet.solidR setSet -region solidR -batch solidR.setSet
+runApplication -l log.setsToZones.solidR setsToZones -region solidR -noFlipMap
+
+runApplication -l log.blockMesh.solidL blockMesh -region solidL
+runApplication -l log.setSet.solidL setSet -region solidL -batch solidL.setSet
+runApplication -l log.setsToZones.solidL setsToZones -region solidL -noFlipMap
+
+
+runApplication -l log.blockMesh.cavityT blockMesh -region cavityT
+runApplication -l log.setSet.cavityT setSet -region cavityT -batch cavityT.setSet
+runApplication -l log.setToZones.cavityT setsToZones -region cavityT -noFlipMap
+
+runApplication -l log.blockMesh.cavityR blockMesh -region cavityR
+runApplication -l log.setSet.cavityR setSet -region cavityR -batch cavityR.setSet
+runApplication -l log.setToZones.cavityR setsToZones -region cavityR -noFlipMap
+
+runApplication -l log.blockMesh.cavityL blockMesh -region cavityL
+runApplication -l log.setSet.cavityL setSet -region cavityL -batch cavityL.setSet
+runApplication -l log.setToZones.cavityL setsToZones -region cavityL -noFlipMap
+
+runApplication multiChtFoam
+
+source postProcessDsip
+
+runApplication -l log.sample.cavityL sample -region cavityL
+runApplication -l log.sample.cavityR sample -region cavityR 
+runApplication -l log.sample.cavityT sample -region cavityT  
+runApplication -l log.sample.solidL sample -region solidL
+runApplication -l log.sample.solidR sample -region solidR 
+runApplication -l log.sample.solidT sample -region solidT  
+
+cat sets/cavityL/0.07/TatYLine_T.xy >>  TatYLine_T.xy
+cat sets/solidL/0.07/TatYLine_T.xy >>  TatYLine_T.xy
+cat sets/cavityR/0.07/TatYLine_T.xy >>  TatYLine_T.xy
+cat sets/solidR/0.07/TatYLine_T.xy >>  TatYLine_T.xy
+
+cat sets/cavityR/0.07/TatXLine_T.xy >>  TatXLine_T.xy
+cat sets/solidT/0.07/TatXLine_T.xy >>  TatXLine_T.xy
+cat sets/cavityT/0.07/TatXLine_T.xy >>  TatXLine_T.xy
+
+# ----------------------------------------------------------------- end-of-file
+

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Source tutorial clean functions
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions
+
+cleanCase
+\rm -f constant/cavityR/polyMesh/boundary
+\rm -rf constant/cavityR/polyMesh/[c-z]*
+\rm -f constant/cavityL/polyMesh/boundary
+\rm -rf constant/cavityL/polyMesh/[c-z]*
+\rm -f constant/cavityT/polyMesh/boundary
+\rm -rf constant/cavityT/polyMesh/[c-z]*
+
+\rm -f constant/solidR/polyMesh/boundary
+\rm -rf constant/solidR/polyMesh/[c-z]*
+\rm -f constant/solidL/polyMesh/boundary
+\rm -rf constant/solidL/polyMesh/[c-z]*
+\rm -f constant/solidT/polyMesh/boundary
+\rm -rf constant/solidT/polyMesh/[c-z]*
+
+\rm -f *xls
+
+\rm -rf surfaces
+\rm -rf sets
+
+\rm -f *xy

@@ -1,0 +1,4 @@
+cellSet solidBlock new boxToCell (0 0.1 0) (1 0.2 0.01)
+faceSet rightZone new patchToFace right
+faceSet leftZone new patchToFace left
+quit

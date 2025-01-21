@@ -1,0 +1,61 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 0.5;
+
+boundaryField
+{
+    right
+    {
+        type            solidWallMixedTemperatureCoupled;
+        neighbourRegionName solidR;
+        neighbourPatchName left;
+        neighbourFieldName T;
+        Kappa           kappaEff;
+        value           uniform 0.5;
+    }
+    left
+    {
+        type            solidWallMixedTemperatureCoupled;
+        neighbourRegionName solidL;
+        neighbourPatchName right;
+        neighbourFieldName T;
+        Kappa           kappaEff;
+        value           uniform 0.5;
+    }
+    topWall
+    {
+        type            solidWallMixedTemperatureCoupled;
+        neighbourRegionName solidT;
+        neighbourPatchName bottom;
+        neighbourFieldName T;
+        Kappa           kappaEff;
+        value           uniform 0.5;
+    }
+    bottomWall
+    {
+        type            zeroGradient;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

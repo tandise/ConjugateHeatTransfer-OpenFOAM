@@ -1,0 +1,4 @@
+faceSet rightZone new patchToFace right
+faceSet leftZone new patchToFace left
+faceSet topWallZone new patchToFace topWall
+quit

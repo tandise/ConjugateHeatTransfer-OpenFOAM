@@ -1,0 +1,8 @@
+#!/bin/sh
+
+grep -oP ' (?<=#Time = ).*' log.multiChtFoam | cut -d ' ' -f 2 > Time.xls
+grep -oP '(?<=ExecutionTime = ).* ' log.multiChtFoam |cut -d ' ' -f 1 > convergenceTime.xls
+grep iteration: log.multiChtFoam |awk -v OFS=', ' '/iteration:/ { print $3 }'| cut -d ',' -f 1|uniq -c | awk '{print $1}' >iteraionPerDt.xls
+
+
+

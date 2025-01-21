@@ -1,0 +1,18 @@
+#!/bin/bash
+cd ${0%/*} || exit 1    # run from this directory
+
+# Stop at first error
+set -e
+
+# Check if FOAM has been sourced
+if [[ -z "${WM_PROJECT}" || "${WM_PROJECT}" != "foam" ]]
+then
+    echo "Please source the foam-extend-4.0 bashrc first!"
+    exit 1
+fi
+
+# Compile the solver
+wclean solvers/multiChtFoam
+
+# Clean all tutorials
+(cd tutorials && ./Allclean) 

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+rootDir=$PWD
+
+rm -f *png
+rm -f *pdf
+rm -rf results
+
+casePaths=$(find . -type d -iname "*case*")
+
+for FOLDER in $casePaths
+do
+    #echo This is: $FOLDER
+    cd $FOLDER
+    source Allclean
+    wait $!
+    cd $rootDir
+done
