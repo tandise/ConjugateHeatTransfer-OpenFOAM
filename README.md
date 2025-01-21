@@ -24,4 +24,5 @@ Monolithic and partitioned solvers are two approaches for solving problems in co
 
 ## Who do I talk to?
 
-* Authors of the Manuscript ID92 submitted for publication in the OpenFOAM Journal (to be disclosed after the double-blind peer review process)
+* Dr Emad Tandis
+  email: e.tandis@aston.ac.uk
