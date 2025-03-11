@@ -22,7 +22,7 @@ Monolithic and partitioned solvers are two approaches for solving problems in co
 * Navigate to the `tutorials` directory and use the `Allrun` script to run the tutorials. This produces the figures within the `results` directory. Alternatively, use the `Allrun` script in each case.
 
 
-## Authors?
+## Authors
 Emad Tandis;
 Philip Cardiff;
 Ali Ashrafizadeh
